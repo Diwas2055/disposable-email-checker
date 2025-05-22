@@ -6,10 +6,10 @@ from typing import Dict, Optional, Set
 
 import httpx
 
-from utils import load_domains, logger, write_domains
+from app.utils import load_domains, logger, write_domains
 
-DISPOSABLE_DOMAINS_FILE = "disposable_domains.json"
-WHITELIST_DOMAINS_FILE = "whitelist_domains.json"
+DISPOSABLE_DOMAINS_FILE = "app/disposable_domains.json"
+WHITELIST_DOMAINS_FILE = "app/whitelist_domains.json"
 DISPOSABLE_DOMAINS_URLS = [
     "https://raw.githubusercontent.com/martenson/disposable-email-domains/master/disposable_email_blocklist.conf",
     "https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains.txt",

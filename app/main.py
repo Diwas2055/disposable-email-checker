@@ -13,9 +13,9 @@ from starlette.routing import Route
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
-from email_checker import DisposableEmailChecker
+from app.email_checker import DisposableEmailChecker
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 
 # Initialize the checker
@@ -168,7 +168,7 @@ middleware = [
 
 # Create Starlette app
 app = Starlette(debug=True, routes=routes, middleware=middleware)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 if __name__ == "__main__":
     print("🚀 Starting Advanced Disposable Email Checker API...")

@@ -1,5 +1,5 @@
 import pytest
-from email_checker import DisposableEmailChecker
+from app.email_checker import DisposableEmailChecker
 
 
 @pytest.mark.asyncio
