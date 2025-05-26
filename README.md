@@ -11,7 +11,7 @@ Developed a lightweight, high-performance API to detect and block disposable ema
 
 - GET `/health` – Perform a health check to verify service status.
 
-- GET `/ – Display` the home page with API documentation.
+- GET `/` – Display the home page with API documentation.
 
 - GET `/stats-page` – View a web-based statistics dashboard.
 
