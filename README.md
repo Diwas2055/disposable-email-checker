@@ -30,7 +30,7 @@ Developed a lightweight, high-performance API to detect and block disposable ema
 
 ### Run the Project:  
 
-``bash
+```bash
 uv sync
 uv run uvicorn main:app --port 8000
 ```
