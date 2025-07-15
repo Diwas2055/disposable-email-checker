@@ -8,13 +8,6 @@ document.getElementById('check-form').addEventListener('submit', async function 
     button.disabled = true;
     loader.style.display = 'inline-block';
     resultBox.textContent = '';
-    
-    // Simulate API delay
-    setTimeout(() => {
-        loader.style.display = 'none';
-        resultBox.textContent = `Checked: ${input.value}\nResult: Not Disposable ✅`;
-        resultBox.classList.add('show');
-    }, 800);
 
     try {
         const res = await fetch('/check', {
@@ -42,13 +35,6 @@ document.getElementById('bulk-form').addEventListener('submit', async function (
     button.disabled = true;
     loader.style.display = 'inline-block';
     resultBox.textContent = '';
-
-    // Simulate API delay
-    setTimeout(() => {
-        loader.style.display = 'none';
-        resultBox.textContent = `Checked: ${input.value}\nResult: Not Disposable ✅`;
-        resultBox.classList.add('show');
-    }, 800);
 
     try {
         const res = await fetch('/check-bulk', {
