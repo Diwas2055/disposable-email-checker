@@ -1,31 +1,53 @@
-document.getElementById("check-form").addEventListener("submit", async (e) => {
+document.getElementById('check-form').addEventListener('submit', async function (e) {
     e.preventDefault();
-    const email = document.getElementById("email-input").value;
+    const email = document.getElementById('email-input').value;
+    const resultBox = document.getElementById('check-result');
+    const button = document.getElementById('check-btn');
+    const loader = document.getElementById('check-loader');
 
-    const res = await fetch("/check", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-    });
+    button.disabled = true;
+    loader.style.display = 'inline-block';
+    resultBox.textContent = '';
 
-    const data = await res.json();
-    document.getElementById("check-result").innerText = JSON.stringify(data, null, 2);
+    try {
+        const res = await fetch('/check', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        resultBox.textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        resultBox.textContent = 'Error checking email.';
+    }
+
+    loader.style.display = 'none';
+    button.disabled = false;
 });
 
-document.getElementById("bulk-form").addEventListener("submit", async (e) => {
+document.getElementById('bulk-form').addEventListener('submit', async function (e) {
     e.preventDefault();
-    const emails = document
-        .getElementById("bulk-input")
-        .value.split("\n")
-        .map((e) => e.trim())
-        .filter(Boolean);
+    const emails = document.getElementById('bulk-input').value;
+    const resultBox = document.getElementById('bulk-result');
+    const button = document.getElementById('bulk-btn');
+    const loader = document.getElementById('bulk-loader');
 
-    const res = await fetch("/bulk-check", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ emails }),
-    });
+    button.disabled = true;
+    loader.style.display = 'inline-block';
+    resultBox.textContent = '';
 
-    const data = await res.json();
-    document.getElementById("bulk-result").innerText = JSON.stringify(data, null, 2);
+    try {
+        const res = await fetch('/check-bulk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ emails: emails.split('\n').map(e => e.trim()).filter(Boolean) })
+        });
+        const data = await res.json();
+        resultBox.textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        resultBox.textContent = 'Error checking emails.';
+    }
+
+    loader.style.display = 'none';
+    button.disabled = false;
 });
