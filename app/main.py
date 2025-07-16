@@ -27,14 +27,8 @@ middleware = [
 ]
 
 async def home(request: Request):
-    """Home page"""
-    return  JSONResponse(
-        {
-            "message": "Welcome to Disposable Email Checker!",
-            "version": "2.0",
-            "status": "OK"
-        }
-    )
+   """Home page"""
+    return RedirectResponse("/v2")
 
 
 
