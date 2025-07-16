@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checker Stats</title>
+    <meta http-equiv="refresh" content="5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .refreshing::after {
+            content: 'Refreshing...';
+            font-size: 0.8rem;
+            color: #888;
+            margin-left: 10px;
+            animation: fade 1s ease-in-out infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Checker Statistics <span class="refreshing"></span></h1>
+
+        <section class="card">
+            <ul>
+                {% for key, value in stats.items() %}
+                    <li><strong>{{ key.replace('_', ' ').title() }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <footer>
+            <a href="/" class="back-link">← Back to Home</a>
+        </footer>
+    </div>
+</body>
+</html>

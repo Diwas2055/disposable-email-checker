@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .v2-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 14px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .v2-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .subtitle {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Disposable Email Checker v1.0</h1>
+        <p class="subtitle">Check if an email is disposable — quickly and accurately!</p>
+
+        <!-- Link to API v2 -->
+        <a href="/v2" class="v2-btn">Go to API v2 ➡️</a>
+
+        <section class="card">
+            <h2>🔍 Single Email Check</h2>
+            <form id="check-form">
+                <input type="email" id="email-input" placeholder="Enter email address..." required>
+                <button type="submit">Check Email</button>
+            </form>
+            <pre id="check-result" class="result-box"></pre>
+        </section>
+
+        <section class="card">
+            <h2>📥 Bulk Email Check</h2>
+            <form id="bulk-form">
+                <textarea id="bulk-input" placeholder="Enter one email per line..." rows="8"></textarea>
+                <button type="submit">Check Bulk</button>
+            </form>
+            <pre id="bulk-result" class="result-box"></pre>
+        </section>
+
+        <footer>
+            <p>Made with ❤️ | <a href="/v1/stats-page">View Stats v1.0</a></p>
+        </footer>
+    </div>
+
+    <script src="static/main.js"></script>
+</body>
+</html>

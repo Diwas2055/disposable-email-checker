@@ -1,0 +1,109 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f2f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+input[type="email"],
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #0052cc;
+}
+
+.result-box {
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 1rem;
+    white-space: pre-wrap;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    color: #777;
+}
+
+footer a {
+    color: #0066ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.05rem;
+}
+
+ul li {
+    margin-bottom: 0.6rem;
+}
+
+.back-link {
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Disposable Email Checker API v2.0</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        .legacy-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .legacy-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-shield-alt"></i> Advanced Disposable Email Checker</h1>
+            <p>Professional API v2.0 for email validation and disposable email detection</p>
+            <div style="margin-top: 10px;">
+                <a href="/v1" class="btn legacy-btn" style="text-decoration: none;">
+                    <i class="fas fa-history"></i>
+                    Go to Legacy API v1
+                </a>
+            </div>
+        </div>
+
+        <!-- Demo Section -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-play-circle"></i>
+                <h2>Live Demo</h2>
+            </div>
+            <div class="card-body">
+                <div class="tabs">
+                    <button class="tab-button active" onclick="switchTab('single')">Single Email Check</button>
+                    <button class="tab-button" onclick="switchTab('bulk')">Bulk Email Check</button>
+                </div>
+
+                <!-- Single Email Tab -->
+                <div id="single-tab" class="tab-content active">
+                    <div class="demo-section">
+                        <h3>Test Single Email</h3>
+                        <div class="input-group">
+                            <input type="email" id="singleEmail" placeholder="Enter email address (e.g., test@tempmail.org)" value="">
+                            <button class="btn" onclick="checkSingleEmail()">
+                                <i class="fas fa-search"></i>
+                                Check Email
+                            </button>
+                        </div>
+                        <div id="singleResult" class="result-card"></div>
+                    </div>
+                </div>
+
+                <!-- Bulk Email Tab -->
+                <div id="bulk-tab" class="tab-content">
+                    <div class="demo-section">
+                        <h3>Test Bulk Email Check</h3>
+                        <div class="bulk-demo">
+                            <textarea
+                                id="bulkEmails"
+                                placeholder="Enter multiple emails (one per line):
+test@tempmail.org
+user@guerrillamail.com
+john@gmail.com
+fake@10minutemail.com"></textarea>
+
+                            <button class="btn" onclick="checkBulkEmails()" style="margin-top: 10px;">
+                                <i class="fas fa-list"></i>
+                                Check Bulk Emails
+                            </button>
+
+                            <div id="bulkResult" class="result-card"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Documentation -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-book"></i>
+                <h2>API Documentation</h2>
+            </div>
+            <div class="card-body">
+                <div class="endpoint-card">
+                    <span class="endpoint-method method-post">POST</span>
+                    <strong>/v2/api/check</strong> - Check single email
+                    <div class="code-block">
+curl -X POST http://localhost:8000/v2/api/check \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@tempmail.org"}'</div>
+                </div>
+
+                <div class="endpoint-card">
+                    <span class="endpoint-method method-post">POST</span>
+                    <strong>/v2/api/bulk-check</strong> - Check multiple emails
+                    <div class="code-block">
+curl -X POST http://localhost:8000/v2/api/bulk-check \
+  -H "Content-Type: application/json" \
+  -d '{"emails":["test@tempmail.org","user@gmail.com"]}'</div>
+                </div>
+
+                <div class="endpoint-card">
+                    <span class="endpoint-method method-get">GET</span>
+                    <strong>/v2/api/stats</strong> - Get API statistics
+                    <div class="code-block">curl "http://localhost:8000/v2/api/stats"</div>
+                </div>
+
+                <div class="endpoint-card">
+                    <span class="endpoint-method method-get">GET</span>
+                    <strong>/v2/api/health</strong> - Health check
+                    <div class="code-block">curl "http://localhost:8000/v2/api/health"</div>
+                </div>
+
+                <div class="endpoint-card">
+                    <span class="endpoint-method method-get">GET</span>
+                    <strong>/v2/api/domains</strong> - Get domain lists
+                    <div class="code-block">curl "http://localhost:8000/v2/api/domains?limit=10&type=disposable"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Stats -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Real-time Statistics</h2>
+                <button class="btn" onclick="loadStats()" style="margin-left: auto;">
+                    <i class="fas fa-sync"></i>
+                    Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="statsContainer">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="disposableCount">-</div>
+                            <div class="stat-label">Disposable Domains</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="whitelistCount">-</div>
+                            <div class="stat-label">Whitelisted Domains</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="cacheSize">-</div>
+                            <div class="stat-label">Cache Size</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="uptime">-</div>
+                            <div class="stat-label" id="uptimeLabel">Uptime (hours)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Status -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-heartbeat"></i>
+                <h2>System Health</h2>
+                <button class="btn" onclick="checkHealth()" style="margin-left: auto;">
+                    <i class="fas fa-stethoscope"></i>
+                    Check Health
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="healthContainer">
+                    <p>Click "Check Health" to see system status</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/main.js"></script>
+</body>
+</html>
