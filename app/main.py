@@ -27,7 +27,7 @@ middleware = [
 ]
 
 async def home(request: Request):
-   """Home page"""
+    """Home page"""
     return RedirectResponse("/v2")
 
 
