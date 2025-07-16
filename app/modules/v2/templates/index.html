@@ -98,7 +98,7 @@ fake@10minutemail.com"></textarea>
                     <span class="endpoint-method method-post">POST</span>
                     <strong>/v2/api/check</strong> - Check single email
                     <div class="code-block">
-curl -X POST http://localhost:8000/v2/api/check \
+curl -X POST https://disposable-email-checker-1.onrender.com/v2/api/check \
   -H "Content-Type: application/json" \
   -d '{"email":"test@tempmail.org"}'</div>
                 </div>
@@ -107,7 +107,7 @@ curl -X POST http://localhost:8000/v2/api/check \
                     <span class="endpoint-method method-post">POST</span>
                     <strong>/v2/api/bulk-check</strong> - Check multiple emails
                     <div class="code-block">
-curl -X POST http://localhost:8000/v2/api/bulk-check \
+curl -X POST https://disposable-email-checker-1.onrender.com/v2/api/bulk-check \
   -H "Content-Type: application/json" \
   -d '{"emails":["test@tempmail.org","user@gmail.com"]}'</div>
                 </div>
@@ -115,19 +115,19 @@ curl -X POST http://localhost:8000/v2/api/bulk-check \
                 <div class="endpoint-card">
                     <span class="endpoint-method method-get">GET</span>
                     <strong>/v2/api/stats</strong> - Get API statistics
-                    <div class="code-block">curl "http://localhost:8000/v2/api/stats"</div>
+                    <div class="code-block">curl "https://disposable-email-checker-1.onrender.com/v2/api/stats"</div>
                 </div>
 
                 <div class="endpoint-card">
                     <span class="endpoint-method method-get">GET</span>
                     <strong>/v2/api/health</strong> - Health check
-                    <div class="code-block">curl "http://localhost:8000/v2/api/health"</div>
+                    <div class="code-block">curl "https://disposable-email-checker-1.onrender.com/v2/api/health"</div>
                 </div>
 
                 <div class="endpoint-card">
                     <span class="endpoint-method method-get">GET</span>
                     <strong>/v2/api/domains</strong> - Get domain lists
-                    <div class="code-block">curl "http://localhost:8000/v2/api/domains?limit=10&type=disposable"</div>
+                    <div class="code-block">curl "https://disposable-email-checker-1.onrender.com/v2/api/domains?limit=10&type=disposable"</div>
                 </div>
             </div>
         </div>
